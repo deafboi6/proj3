@@ -16,6 +16,7 @@ ChartJS.register(
 
 
 export default function App() {
+  const newDate = useRef(new Date());
 
   const [currentHours, setCurrentHours] = useState(newDate.current.getHours());
   const [currentMinutes, setCurrentMinutes] = useState(
@@ -34,7 +35,6 @@ export default function App() {
   useEffect(() => {
     console.log(nowTime);
   });
-  const newDate = useRef(new Date());
   // ----ON STANDBY UNTIL HOMEPAGE IS READY---- //
   // const home = {
   //   name: "Home",
@@ -52,14 +52,13 @@ export default function App() {
   //   ]
   // };
 
-  // const options = {};
-
+  // const options = {}
   return (
     <div>
-      <h1>Start of our project 3!</h1>
+      <h2>This is the Start of Project 3!</h2>
       <div>
-        {/* ON STANBY UNTIL HOME PAGE IS READY */}
-        {/* <Pie data = {data} options= {options} /> */}
+        {/* ON STANDBY UNTIL HOMEPAGE IS READY*/}
+        {/* <Pie data={data} options={options} /> */}
       </div>
       <h3>{nowTime}</h3>
     </div>
