@@ -2,8 +2,8 @@ const { Income, Expense } = require("../models");
 
 const resolvers = {
   Query: {
-    tech: async () => {
-      return Tech.find({});
+    Income: async () => {
+      return Income.find({});
     },
     matchups: async (parent, { _id }) => {
       const params = _id ? { _id } : {};

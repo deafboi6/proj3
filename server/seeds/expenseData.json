@@ -1,35 +1,31 @@
 [
   {
-    "name": "JavaScript"
+    "name": "Housing",
+    "price": 2600
   },
   {
-    "name": "HTML"
+    "name": "Groceries",
+    "price": 600
   },
   {
-    "name": "CSS"
+    "name": "Insurance",
+    "price": 120
   },
   {
-    "name": "Node.js"
+    "name": "Car payment",
+    "price": 367
   },
   {
-    "name": "Express.js"
+    "name": "Utilities",
+    "price": 212
   },
   {
-    "name": "MySQL"
+    "name": "Savings",
+    "price": 1200
   },
   {
-    "name": "MongoDB"
-  },
-  {
-    "name": "React"
-  },
-  {
-    "name": "GraphQL"
-  },
-  {
-    "name": "Sequelize"
-  },
-  {
-    "name": "Handlebars.js"
+    "name": "other",
+    "price": 400
+
   }
 ]
