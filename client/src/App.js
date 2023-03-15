@@ -1,3 +1,4 @@
+import React, { useEffect, useRef, useState } from "react";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -14,8 +15,26 @@ ChartJS.register(
 );
 
 
+export default function App() {
 
-function App() {
+  const [currentHours, setCurrentHours] = useState(newDate.current.getHours());
+  const [currentMinutes, setCurrentMinutes] = useState(
+    newDate.current.getMinutes()
+  );
+  const [currentSeconds, setCurrentSeconds] = useState(
+    newDate.current.getSeconds()
+  );
+  setInterval(() => {
+    newDate.current = new Date();
+    setCurrentHours(newDate.current.getHours());
+    setCurrentMinutes(newDate.current.getMinutes());
+    setCurrentSeconds(newDate.current.getSeconds());
+  }, 1000);
+  const nowTime = `${currentHours} : ${currentMinutes} : ${currentSeconds}`;
+  useEffect(() => {
+    console.log(nowTime);
+  });
+  const newDate = useRef(new Date());
   // ----ON STANDBY UNTIL HOMEPAGE IS READY---- //
   // const home = {
   //   name: "Home",
@@ -42,8 +61,7 @@ function App() {
         {/* ON STANBY UNTIL HOME PAGE IS READY */}
         {/* <Pie data = {data} options= {options} /> */}
       </div>
+      <h3>{nowTime}</h3>
     </div>
-  );
+  )
 }
-
-export default App;
