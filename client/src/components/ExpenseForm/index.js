@@ -31,6 +31,11 @@ const ExpenseForm = () => {
 
   const handleChange = (event) => {
     //************TODO**********/
+    const { name } = event.target;
+
+    if (name === 'expenseAmount') {
+      setExpenseAmount({ ...expenseAmount })
+    }
   };
 
   return (
