@@ -1,4 +1,4 @@
-const { Tech, Matchup } = require('../models');
+const { Income, Expense } = require("../models");
 
 const resolvers = {
   Query: {
@@ -11,7 +11,7 @@ const resolvers = {
     },
   },
   Mutation: {
-    createMatchup: async (parent, args) => {
+    createExpense: async (parent, args) => {
       const matchup = await Matchup.create(args);
       return matchup;
     },
