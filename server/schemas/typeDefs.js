@@ -1,5 +1,5 @@
 const typeDefs = `#graphql
-  type Tech {
+  type Income {
     _id: ID!
     name: String!
   }

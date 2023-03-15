@@ -5,8 +5,8 @@ const incomeSchema = new Schema({
     type: Number,
     required: true,
   },
-  Date: {
-    type: Date,
+  Month: {
+    type: String,
     required: true,
   },
 });
