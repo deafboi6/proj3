@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
 
@@ -12,9 +12,9 @@ const Header = () => {
     <header className="">
       <div className="">
         <div>
-          {/* <Link className="" to="/">
+          <Link className="" to="/">
             <h1 className="">Money Masterminds</h1>
-          </Link> */}
+          </Link>
           <p className="">A budget tracker guaranteed to make you a millionaire.*</p>
         </div>
         <div>
@@ -26,12 +26,12 @@ const Header = () => {
             </>
           ) : (
             <>
-              {/* <Link className="" to="/login">
+              <Link className="" to="/login">
                 Login
               </Link>
               <Link className="" to="/signup">
                 Signup
-              </Link> */}
+              </Link>
             </>
           )}
         </div>

@@ -17,7 +17,7 @@ const IncomeList = ({ incomes = [] }) => {
           {incomes &&
             incomes.map((income) => (
               <div key={income._id} className="">
-                <h5 className="">{income.Month}</h5>
+                <h5 className="">{income.month}</h5>
                 <ul>
                   <li>{income.amount}</li>
                 </ul>
@@ -28,7 +28,7 @@ const IncomeList = ({ incomes = [] }) => {
       ) : (
           <p>
             You need to be logged in to view your income. Please{' '}
-            {/* <Link to="/login">login</Link> or <Link to="/signup">signup.</Link> */}
+            <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
           </p>
       )}
     </div>

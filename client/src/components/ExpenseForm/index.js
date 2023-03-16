@@ -9,6 +9,7 @@ import Auth from '../../utils/auth';
 const ExpenseForm = () => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
+  const [expenseCategory, setExpenseCategory] = useState('');
   
   const [addExpense, { error }] = useMutation(ADD_EXPENSE);
 
@@ -19,13 +20,14 @@ const ExpenseForm = () => {
       const { data } = await addExpense({
         variables: {
           //******SUBJECT TO CHANGE*******/
-          price,
-          name,
+          userId,
+          expenseCategory,
+          expenseAmount,
         },
       });
 
-      setName('');
-      setPrice('');
+      setExpenseAmount('');
+      setExpenseCategory('');
     } catch (err) {
       console.error(err);
     }
@@ -34,9 +36,9 @@ const ExpenseForm = () => {
   const handleChange = (event) => {
     const { name } = event.target;
 
-    if (name === 'name') {
-      setName({ ...name });
-      setPrice({ ...price });
+    if (name === 'expenseAmount') {
+      setExpenseAmount({ ...expenseAmount });
+      setExpenseCategory({ ...expenseCategory });
     }
   };
 
@@ -50,7 +52,7 @@ const ExpenseForm = () => {
             className=""
             onSubmit={handleFormSubmit}
           >
-            <select id="price" name="price">
+            <select id="expenseCategory" name="expenseCategory">
               <option value="housing">Housing</option>
               <option value="groceries">Groceries</option>
               <option value="insurance">Insurance</option>
@@ -80,7 +82,7 @@ const ExpenseForm = () => {
       ) : (
         <p>
           You need to be logged in to add an expense. Please{' '}
-          {/* <Link to="/login">login</Link> or <Link to="/signup">signup.</Link> */}
+          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
     </div>

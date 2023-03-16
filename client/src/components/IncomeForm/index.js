@@ -7,8 +7,7 @@ import { ADD_INCOME } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 const IncomeForm = () => {
-  const [amount, setAmount] = useState('');
-  const [Month, setMonth] = useState('');
+  const [incomeAmount, setIncomeAmount] = useState('');
   
   const [addIncome, { error }] = useMutation(ADD_INCOME);
 
@@ -19,13 +18,12 @@ const IncomeForm = () => {
       const { data } = await addIncome({
         variables: {
           //******SUBJECT TO CHANGE*******/
-          amount,
-          Month,
+          userId,
+          incomeAmount,
         },
       });
 
-      setAmount('');
-      setMonth('');
+      setIncomeAmount('');
     } catch (err) {
       console.error(err);
     }
@@ -35,8 +33,7 @@ const IncomeForm = () => {
     const { name } = event.target;
 
     if (name === 'incomeAmount') {
-      setAmount({ ...amount });
-      setMonth({ ...Month });
+      setIncomeAmount({ ...incomeAmount });
     }
   };
 
@@ -51,24 +48,11 @@ const IncomeForm = () => {
             onSubmit={handleFormSubmit}
           >
             <div className="">
-              <select id="Month" name="Month">
-                <option value="january">January</option>
-                <option value="february">February</option>
-                <option value="march">March</option>
-                <option value="april">April</option>
-                <option value="may">May</option>
-                <option value="june">June</option>
-                <option value="july">July</option>
-                <option value="august">August</option>
-                <option value="september">September</option>
-                <option value="october">October</option>
-                <option value="november">November</option>
-                <option value="december">December</option>
-              </select>
+              <input type="text" id="incomeDate" name="incomeDate"/>
               <textarea
-                name="amount"
+                name="incomeAmount"
                 placeholder="Income amount..."
-                value={amount}
+                value={incomeAmount}
                 className=""
                 // style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
@@ -85,7 +69,7 @@ const IncomeForm = () => {
       ) : (
         <p>
           You need to be logged in to add income. Please{' '}
-          {/* <Link to="/login">login</Link> or <Link to="/signup">signup.</Link> */}
+          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
     </div>
