@@ -8,6 +8,7 @@ import Auth from '../../utils/auth';
 
 const ExpenseForm = () => {
   const [expenseAmount, setExpenseAmount] = useState('');
+  const [expenseCategory, setExpenseCategory] = useState('');
   
   const [addExpense, { error }] = useMutation(ADD_EXPENSE);
 
@@ -19,22 +20,24 @@ const ExpenseForm = () => {
         variables: {
           //******SUBJECT TO CHANGE*******/
           userId,
+          expenseCategory,
           expenseAmount,
         },
       });
 
       setExpenseAmount('');
+      setExpenseCategory('');
     } catch (err) {
       console.error(err);
     }
   };
 
   const handleChange = (event) => {
-    //************TODO**********/
     const { name } = event.target;
 
     if (name === 'expenseAmount') {
-      setExpenseAmount({ ...expenseAmount })
+      setExpenseAmount({ ...expenseAmount });
+      setExpenseCategory({ ...expenseCategory });
     }
   };
 
@@ -48,6 +51,15 @@ const ExpenseForm = () => {
             className=""
             onSubmit={handleFormSubmit}
           >
+            <select id="expenseCategory" name="expenseCategory">
+              <option value="housing">Housing</option>
+              <option value="groceries">Groceries</option>
+              <option value="insurance">Insurance</option>
+              <option value="car-payment">Car payment</option>
+              <option value="utilities">Utilities</option>
+              <option value="savings">Savings</option>
+              <option value="other">Other</option>
+            </select>
             <div className="">
               <textarea
                 name="expenseAmount"
@@ -68,12 +80,12 @@ const ExpenseForm = () => {
         </>
       ) : (
         <p>
-          You need to be logged in to share your thoughts. Please{' '}
+          You need to be logged in to add an expense. Please{' '}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
     </div>
-  )
-}
+  );
+};
 
 export default ExpenseForm;
