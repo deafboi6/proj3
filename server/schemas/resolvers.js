@@ -1,27 +1,36 @@
-const { Income, Expense } = require("../models");
+const { Income, Expense, User } = require("../models");
 
 const resolvers = {
   Query: {
-    Income: async () => {
+    income: async () => {
       return Income.find({});
     },
-    matchups: async (parent, { _id }) => {
-      const params = _id ? { _id } : {};
-      return Matchup.find(params);
+    expense: async () => {
+      return Expense.find({});
+    },
+    user: async () => {
+      return User.find();
     },
   },
+
   Mutation: {
     createExpense: async (parent, args) => {
-      const matchup = await Matchup.create(args);
-      return matchup;
+      const expense = await Expense.create(args);
+      return expense;
     },
-    createVote: async (parent, { _id, techNum }) => {
-      const vote = await Matchup.findOneAndUpdate(
-        { _id },
-        { $inc: { [`tech${techNum}_votes`]: 1 } },
-        { new: true }
-      );
-      return vote;
+    createIncome: async (parent, args) => {
+      const Income = await Income.create(args);
+      return Income;
+    },
+
+    addUser: async (parent, { email }) => {
+      return User.create({ email });
+    },
+    updateExpense: async (parent, { expenseId }) => {
+      return Expense.findOneAndUpdate({ _id: expenseId });
+    },
+    removeExpense: async (parent, { expenseId }) => {
+      return Expense.findOneAndDelete({ _id: expenseId });
     },
   },
 };

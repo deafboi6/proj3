@@ -1,25 +1,31 @@
 const typeDefs = `#graphql
   type Income {
-    _id: ID!
-    name: String!
+    amount: Number
+    month: String
+
   }
 
-  type Matchup {
-    _id: ID!
-    tech1: String!
-    tech2: String!
-    tech1_votes: Int
-    tech2_votes: Int
+  type Expense {
+    name: String
+    price: Number
+  }
+
+  type User {
+    name: String
   }
 
   type Query {
-    tech: [Tech]
-    matchups(_id: String): [Matchup]
+    Income: [Income]
+    Expense: [Expense]
+    User: [User]
   }
 
   type Mutation {
-    createMatchup(tech1: String!, tech2: String!): Matchup
-    createVote(_id: String!, techNum: Int!): Matchup
+    createExpense(name: String!, price: String!): Expense
+    createIncome(amount: String!, month: String!): Income
+    addUser(email: String!): User
+    updateExpense(expenseId: ID!): Expense
+    removeExpense(expenseId: ID!): Expense
   }
 `;
 
