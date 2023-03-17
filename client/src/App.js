@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -18,6 +19,7 @@ const client = new ApolloClient({
 export default function App() {
     return (
         <ApolloProvider client={client}>
+        <Router>
         <div>
             <Header />
             <div className="h-25 w-25">
@@ -33,6 +35,7 @@ export default function App() {
             </div>
             <Footer />
         </div>
+        </Router>
         </ApolloProvider>
     );
 }
