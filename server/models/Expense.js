@@ -7,7 +7,7 @@ const expenseSchema = new Schema({
     unique: true,
   },
   price: {
-    type: Number,
+    type: String,
     required: true,
   },
 });
