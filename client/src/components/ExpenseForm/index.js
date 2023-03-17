@@ -7,8 +7,8 @@ import { ADD_EXPENSE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 const ExpenseForm = () => {
-  const [expenseAmount, setExpenseAmount] = useState('');
-  const [expenseCategory, setExpenseCategory] = useState('');
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState('');
   
   const [addExpense, { error }] = useMutation(ADD_EXPENSE);
 
@@ -20,13 +20,13 @@ const ExpenseForm = () => {
         variables: {
           //******SUBJECT TO CHANGE*******/
           userId,
-          expenseCategory,
-          expenseAmount,
+          price,
+          name,
         },
       });
 
-      setExpenseAmount('');
-      setExpenseCategory('');
+      setName('');
+      setPrice('');
     } catch (err) {
       console.error(err);
     }
@@ -35,9 +35,9 @@ const ExpenseForm = () => {
   const handleChange = (event) => {
     const { name } = event.target;
 
-    if (name === 'expenseAmount') {
-      setExpenseAmount({ ...expenseAmount });
-      setExpenseCategory({ ...expenseCategory });
+    if (name === 'name') {
+      setName({ ...name });
+      setPrice({ ...price });
     }
   };
 
@@ -51,7 +51,7 @@ const ExpenseForm = () => {
             className=""
             onSubmit={handleFormSubmit}
           >
-            <select id="expenseCategory" name="expenseCategory">
+            <select id="price" name="price">
               <option value="housing">Housing</option>
               <option value="groceries">Groceries</option>
               <option value="insurance">Insurance</option>
@@ -62,9 +62,9 @@ const ExpenseForm = () => {
             </select>
             <div className="">
               <textarea
-                name="expenseAmount"
-                placeholder="Expense amount..."
-                value={expenseAmount}
+                name="name"
+                placeholder="Expense price..."
+                value={name}
                 className=""
                 // style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
