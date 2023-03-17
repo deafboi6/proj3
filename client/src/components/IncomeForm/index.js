@@ -48,7 +48,20 @@ const IncomeForm = () => {
             onSubmit={handleFormSubmit}
           >
             <div className="">
-              <input type="text" id="incomeDate" name="incomeDate"/>
+              <select id="Month" name="Month">
+                <option value="january">January</option>
+                <option value="february">February</option>
+                <option value="march">March</option>
+                <option value="april">April</option>
+                <option value="may">May</option>
+                <option value="june">June</option>
+                <option value="july">July</option>
+                <option value="august">August</option>
+                <option value="september">September</option>
+                <option value="october">October</option>
+                <option value="november">November</option>
+                <option value="december">December</option>
+              </select>
               <textarea
                 name="incomeAmount"
                 placeholder="Income amount..."
