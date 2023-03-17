@@ -29,5 +29,27 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_EXPENSE = gql`
-  mutation addExpense() {}
+  mutation addExpense($name: String, $price: Number) {
+    addExpense( 
+      name: $name
+      price: $price
+    ) {
+      _id
+      name
+      price
+    }
+  }
+`;
+
+export const ADD_INCOME = gql`
+  mutation addIncome($amount: Number, $Month: String) {
+    addIncome( 
+      amount: $amount
+      Month: $Month
+    ) {
+      _id
+      amount
+      Month
+    }
+  }
 `;
