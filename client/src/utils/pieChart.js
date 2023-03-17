@@ -1,4 +1,7 @@
-    // ----ON STANDBY UNTIL HOMEPAGE IS READY---- //
+
+import { Pie } from "react-chartjs-2";
+
+const PieChart = () => {
     const home = {
         name: "Home",
         amount: 15
@@ -13,23 +16,13 @@
         }]
     };
 
-        const options = {}
+    const options = {}
 
-// --- What to input in the return field
-// <Pie data={data} options={options} />
+    return (
+        <div>
+            <Pie data={data} options={options} />
+        </div>
+    );
+};
 
-// --- What to add to top of App.js
-// import {
-// Chart as ChartJS,
-// ArcElement,
-// Tooltip,
-// Legend
-// } from "chart.js";
-
-// import { Pie } from "react-chartjs-2";
-
-// ChartJS.register(
-// ArcElement,
-// Tooltip,
-// Legend
-// );
+export default PieChart;
