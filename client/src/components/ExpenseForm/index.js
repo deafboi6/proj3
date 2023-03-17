@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_EXPENSE } from '../../utils/mutations';
@@ -83,7 +83,7 @@ const ExpenseForm = () => {
       ) : (
         <p>
           You need to be logged in to add an expense. Please{' '}
-          {/* <Link to="/login">login</Link> or <Link to="/signup">signup.</Link> */}
+          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
     </div>
