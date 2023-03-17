@@ -1,29 +1,25 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import 'bootstrap/dist/css/bootstrap.css';
+
+import PieChart from "./utils/pieChart";
+// import Time from "./utils/displayTime";
+
+
+const client = new ApolloClient({
+    uri: '/graphql',
+    cache: new InMemoryCache(),
+});
 
 export default function App() {
-  const newDate = useRef(new Date());
-
-  const [currentHours, setCurrentHours] = useState(newDate.current.getHours());
-  const [currentMinutes, setCurrentMinutes] = useState(
-    newDate.current.getMinutes()
-  );
-  const [currentSeconds, setCurrentSeconds] = useState(
-    newDate.current.getSeconds()
-  );
-  setInterval(() => {
-    newDate.current = new Date();
-    setCurrentHours(newDate.current.getHours());
-    setCurrentMinutes(newDate.current.getMinutes());
-    setCurrentSeconds(newDate.current.getSeconds());
-  }, 1000);
-  const nowTime = `${currentHours} : ${currentMinutes} : ${currentSeconds}`;
-  useEffect(() => {
-    console.log(nowTime);
-  });
-  return (
-    <div>
-      <h2>This is the Start of Project 3!</h2>
-      <h3>{nowTime}</h3>
-    </div>
-  );
+    return (
+        <ApolloProvider client={client}>
+        <div>
+            <h1>This is the Start of Project 3!</h1>
+            <div className="h-25 w-25">
+                <PieChart />
+            </div>
+        </div>
+        </ApolloProvider>
+    );
 }
