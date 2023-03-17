@@ -19,7 +19,6 @@ const ExpenseForm = () => {
       const { data } = await addExpense({
         variables: {
           //******SUBJECT TO CHANGE*******/
-          userId,
           price,
           name,
         },
@@ -84,7 +83,7 @@ const ExpenseForm = () => {
       ) : (
         <p>
           You need to be logged in to add an expense. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+          {/* <Link to="/login">login</Link> or <Link to="/signup">signup.</Link> */}
         </p>
       )}
     </div>

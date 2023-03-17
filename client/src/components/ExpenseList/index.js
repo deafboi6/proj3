@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
 
@@ -28,7 +28,7 @@ const ExpenseList = ({ expenses = [] }) => {
       ) : (
           <p>
             You need to be logged in to view your expenses. Please{' '}
-            <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+            {/* <Link to="/login">login</Link> or <Link to="/signup">signup.</Link> */}
           </p>
       )}
     </div>
