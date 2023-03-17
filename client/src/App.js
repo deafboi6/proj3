@@ -5,18 +5,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import PieChart from "./utils/pieChart";
 // import Time from "./utils/displayTime";
 
-import {
-    Chart as ChartJS,
-    ArcElement,
-    Tooltip,
-    Legend
-    } from "chart.js";
-
-ChartJS.register(
-    ArcElement,
-    Tooltip,
-    Legend
-);
 
 const client = new ApolloClient({
     uri: '/graphql',
