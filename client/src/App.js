@@ -19,10 +19,19 @@ export default function App() {
     return (
         <ApolloProvider client={client}>
         <div>
-            <h1>This is the Start of Project 3!</h1>
+            <Header />
             <div className="h-25 w-25">
                 <PieChart />
             </div>
+            <div>
+                <ExpenseForm />
+                <ExpenseList />
+            </div>
+            <div>
+                <IncomeForm />
+                <IncomeList />
+            </div>
+            <Footer />
         </div>
         </ApolloProvider>
     );
