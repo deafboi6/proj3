@@ -7,7 +7,8 @@ import { ADD_INCOME } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 const IncomeForm = () => {
-  const [incomeAmount, setIncomeAmount] = useState('');
+  const [amount, setAmount] = useState('');
+  const [Month, setMonth] = useState('');
   
   const [addIncome, { error }] = useMutation(ADD_INCOME);
 
@@ -18,12 +19,13 @@ const IncomeForm = () => {
       const { data } = await addIncome({
         variables: {
           //******SUBJECT TO CHANGE*******/
-          userId,
-          incomeAmount,
+          amount,
+          Month,
         },
       });
 
-      setIncomeAmount('');
+      setAmount('');
+      setMonth('');
     } catch (err) {
       console.error(err);
     }
@@ -33,7 +35,8 @@ const IncomeForm = () => {
     const { name } = event.target;
 
     if (name === 'incomeAmount') {
-      setIncomeAmount({ ...incomeAmount });
+      setAmount({ ...amount });
+      setMonth({ ...Month });
     }
   };
 
@@ -63,9 +66,9 @@ const IncomeForm = () => {
                 <option value="december">December</option>
               </select>
               <textarea
-                name="incomeAmount"
+                name="amount"
                 placeholder="Income amount..."
-                value={incomeAmount}
+                value={amount}
                 className=""
                 // style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
