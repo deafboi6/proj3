@@ -64,6 +64,9 @@ const ExpenseForm = () => {
                 name="name"
                 placeholder="Expense price..."
                 value={name}
+                name="name"
+                placeholder="Expense price..."
+                value={name}
                 className=""
                 // style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
