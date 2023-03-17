@@ -1,9 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-
-import ThoughtList from "../components/ExpenseList";
-import ThoughtForm from "../components/ExpenseForm";
-
+import ExpenseList from "../components/ExpenseList";
+import ExpenseForm from "../components/ExpenseForm";
 import { QUERY_USER } from "../utils/queries";
 
 const Home = () => {
