@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -28,9 +28,9 @@ export default function App() {
         <ApolloProvider client={client}>
         <div>
             <h1>This is the Start of Project 3!</h1>
-                <div className="h-25 w-25">
-                    <PieChart />
-                </div>
+            <div className="h-25 w-25">
+                <PieChart />
+            </div>
         </div>
         </ApolloProvider>
     );
