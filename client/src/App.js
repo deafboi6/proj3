@@ -10,6 +10,8 @@ import Header from "./components/Header";
 import IncomeForm from "./components/IncomeForm";
 import IncomeList from "./components/IncomeList";
 import PieChart from "./utils/pieChart";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 const client = new ApolloClient({
     uri: '/graphql',
