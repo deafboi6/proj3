@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_INCOME } from '../../utils/mutations';
-
-import Auth from '../../utils/auth';
 
 const IncomeForm = () => {
   const [amount, setAmount] = useState('');
@@ -43,8 +40,6 @@ const IncomeForm = () => {
   return (
     <div>
       <h4>Add new income:</h4>
-
-      {Auth.loggedIn() ? (
         <>
           <form
             className=""
@@ -82,12 +77,6 @@ const IncomeForm = () => {
             </div>
           </form>
         </>
-      ) : (
-        <p>
-          You need to be logged in to add income. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
-      )}
     </div>
   );
 };

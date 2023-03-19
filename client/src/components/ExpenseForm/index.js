@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_EXPENSE } from '../../utils/mutations';
-
-import Auth from '../../utils/auth';
 
 const ExpenseForm = () => {
   const [name, setName] = useState('');
@@ -43,8 +40,6 @@ const ExpenseForm = () => {
   return (
     <div>
       <h4>Add new expense:</h4>
-
-      {Auth.loggedIn() ? (
         <>
           <form
             className=""
@@ -77,12 +72,6 @@ const ExpenseForm = () => {
             </div>
           </form>
         </>
-      ) : (
-        <p>
-          You need to be logged in to add an expense. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
-      )}
     </div>
   );
 };

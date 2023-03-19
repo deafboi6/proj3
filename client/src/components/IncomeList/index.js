@@ -1,7 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-import Auth from '../../utils/auth';
 
 const IncomeList = ({ incomes = [] }) => {
   if (!incomes.length) {
@@ -10,7 +7,6 @@ const IncomeList = ({ incomes = [] }) => {
 
   return (
     <div>
-      {Auth.loggedIn() ? (
       <>
         <h3 className="">Income</h3>
         <div className="">
@@ -25,12 +21,6 @@ const IncomeList = ({ incomes = [] }) => {
             ))}
         </div>
       </>
-      ) : (
-          <p>
-            You need to be logged in to view your income. Please{' '}
-            <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-          </p>
-      )}
     </div>
   );
 };
