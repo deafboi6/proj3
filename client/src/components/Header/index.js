@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
-import Auth from '../../utils/auth';
+import React from "react";
+import { Link } from "react-router-dom";
+import { format } from "date-fns";
+import Auth from "../../utils/auth";
 
 const Header = () => {
   const logout = (event) => {
@@ -15,7 +15,10 @@ const Header = () => {
           <Link className="" to="/">
             <h1 className="">Money Masterminds</h1>
           </Link>
-          <p className="">A budget tracker guaranteed to make you a millionaire.*</p>
+          <p className="">
+            A budget tracker guaranteed to make you a millionaire.*
+          </p>
+          <p> {format(new Date(), "dd/mm/yyyy")} </p>
         </div>
         <div>
           {Auth.loggedIn() ? (
