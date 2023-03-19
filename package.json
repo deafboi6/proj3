@@ -27,6 +27,7 @@
   "dependencies": {
     "bootstrap": "^5.2.3",
     "chart.js": "^4.2.1",
+    "date-fns": "^2.29.3",
     "react-chartjs-2": "^5.2.0"
   }
 }
