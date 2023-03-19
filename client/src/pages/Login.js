@@ -15,11 +15,6 @@ function Login() {
                 <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                     <Button color='black' backgroundColor='#BC312E'>Login</Button>
                 </div>
-                <div className='login-newuser' style={{ width: '100%' }}>
-                    <Link to='/Signup'>
-                        <label style={{ width: '100%', cursor: 'pointer' }}>New User <label style={{ color: '#B312E', cursor: 'pointer' }}></label></label>
-                    </Link>
-                </div>
             </div>
         </div>
     )
