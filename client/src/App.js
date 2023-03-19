@@ -43,7 +43,8 @@ export default function App() {
             <div>
                 <Header />
                 <div>
-                    {/* Put in signin/signup form */}
+                    <Login />
+                    <Signup />
                 </div>
                 <Footer />
             </div>
