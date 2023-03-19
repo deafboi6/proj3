@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { format } from "date-fns";
 import Auth from "../../utils/auth";
 
@@ -12,31 +11,18 @@ const Header = () => {
     <header className="">
       <div className="">
         <div>
-          <Link className="" to="/">
             <h1 className="">Money Masterminds</h1>
-          </Link>
           <p className="">
             A budget tracker guaranteed to make you a millionaire.*
           </p>
           <p> {format(new Date(), "dd/mm/yyyy")} </p>
         </div>
         <div>
-          {Auth.loggedIn() ? (
-            <>
-              <button className="" onClick={logout}>
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link className="" to="/login">
-                Login
-              </Link>
-              <Link className="" to="/signup">
-                Signup
-              </Link>
-            </>
-          )}
+          <>
+            <button className="" onClick={logout}>
+              Logout
+            </button>
+          </>
         </div>
       </div>
     </header>
