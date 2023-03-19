@@ -1,7 +1,7 @@
 import React from 'react'
 import './signup.css'
-import Input from '@chakra-ui/react'
-import Button from '@chakra-ui/react'
+import { Input } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 import { NavLink as Link } from 'react-router-dom'
 
 function Signup() {
@@ -43,4 +43,4 @@ function Signup() {
     )
 }
 
-export default Signup
+export default Signup;
