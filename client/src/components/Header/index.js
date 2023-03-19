@@ -19,9 +19,13 @@ const Header = () => {
         </div>
         <div>
           <>
+          {Auth.loggedIn() ? (
             <button className="" onClick={logout}>
-              Logout
-            </button>
+            Logout
+          </button>
+          ) : (
+            <div></div>
+          )}
           </>
         </div>
       </div>
