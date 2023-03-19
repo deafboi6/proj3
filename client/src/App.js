@@ -12,6 +12,7 @@ import IncomeList from "./components/IncomeList";
 import PieChart from "./utils/pieChart";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Auth from "./utils/auth";
 
 const client = new ApolloClient({
     uri: '/graphql',
@@ -22,7 +23,8 @@ export default function App() {
     return (
         <ApolloProvider client={client}>
         <Router>
-        <div>
+        {Auth.loggedIn() ? (
+            <div>
             <Header />
             <div className="h-25 w-25">
                 <PieChart />
@@ -37,6 +39,15 @@ export default function App() {
             </div>
             <Footer />
         </div>
+        ) : (
+            <div>
+                <Header />
+                <div>
+                    {/* Put in signin/signup form */}
+                </div>
+                <Footer />
+            </div>
+        )}
         </Router>
         </ApolloProvider>
     );
