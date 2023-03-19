@@ -18,7 +18,7 @@ const Header = () => {
           <p className="">
             A budget tracker guaranteed to make you a millionaire.*
           </p>
-          <p> {format(new Date(), "dd/mm/yyyy")} </p>
+          <p> {format(new Date(), "do MMMM")} </p>
         </div>
         <div>
           {Auth.loggedIn() ? (
