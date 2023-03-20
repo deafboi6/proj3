@@ -1,14 +1,14 @@
 [
     {
-        "amount": "8000",
-        "Month": "January"
+        "amount": 8000,
+        "month": "January"
     },
     {
-        "amount": "8000",
-        "Month": "February"
+        "amount": 8000,
+        "month": "February"
     },
     {
-        "amount": "8000",
-        "Month": "March"
+        "amount": 8000,
+        "month": "March"
     }
 ]
