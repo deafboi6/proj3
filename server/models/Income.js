@@ -2,10 +2,10 @@ const { Schema, model } = require("mongoose");
 
 const incomeSchema = new Schema({
   amount: {
-    type: String,
+    type: Number,
     required: true,
   },
-  Month: {
+  month: {
     type: String,
     required: true,
   },
