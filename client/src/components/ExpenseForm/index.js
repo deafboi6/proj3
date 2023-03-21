@@ -16,7 +16,6 @@ const ExpenseForm = () => {
       const { data } = await addExpense({
         variables: {
           //******SUBJECT TO CHANGE*******/
-          userId,
           expenseCategory,
           expenseAmount,
         },
@@ -59,7 +58,7 @@ const ExpenseForm = () => {
               <textarea
                 name="name"
                 placeholder="Expense price..."
-                value={name}
+                // value={name}
                 className=""
                 // style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
