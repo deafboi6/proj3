@@ -1,41 +1,60 @@
-import React from 'react'
-import './signup.css'
-import { Input } from '@chakra-ui/react'
-import { Button } from '@chakra-ui/react'
-import { NavLink as Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import './signup.css';
+import { ADD_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
+import { useMutation } from '@apollo/client';
 
 function Signup() {
+    const [formState, setFormState] = useState({
+        // firstName: '',
+        // lastName: '',
+        email: '',
+        password: '',
+    });
+    
+    const [addUser, { error, data }] = useMutation(ADD_USER);
+    
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+    
+        setFormState({
+            ...formState,
+            [name]: value
+        });
+    };
+    
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        console.log(formState);
+
+        try {
+            const { data } = await addUser({
+                ...formState
+            });
+            console.log(data);
+            Auth.login(data.addUser.token);
+        } catch (err) {
+            console.log("failed in signup form, try/catch");
+            console.error(err);
+        };
+    };
+
     return (
-        <div className='register-outer'>
-            <div className='register-box'>
-                <div className='register-box-title' style={{ color: 'black' }}>REGISTER</div>
-
-                <div className='register-row'>
-                    <Input placeholder='First Name' _placeholder={{ marginLeft: '8%', color: 'gray' }} borderColor='#211F22' borderBottomColor='black' borderRadius='0%' color='black' _hover={{ borderColor: 'none' }} focusBorderColor='#211F22' _focus={{ borderBottomColor: 'black' }} marginRight='2%'/>
-                    <Input placeholder='Middle name (optional)' _placeholder={{ marginLeft: '8%', color: 'gray' }} borderColor="#211F22" borderBottomColor="black" borderRadius="0%" color='black' _hover={{ borderColor:'none' }} focusBorderColor='#211F22' _focus={{ borderBottomColor: 'black' }} marginLeft='2%'/>
-                </div>
-
-                <div className='register-row'>
-                <Input placeholder='Last name' _placeholder={{ marginLeft: '8%', color: 'gray' }} borderColor='#211F22' borderBottomColor='black' borderRadius='0%' color='black' _hover={{ borderColor: 'none' }} focusBorderColor='#211F22' _focus={{ borderBottomColor: 'black' }} marginRight='2%'/>
-                <Input placeholder='Email' _placeholder={{ marginLeft: '8%', color: 'gray' }} borderColor='#211F22' borderBottomColor='black' borderRadius='0%' color='black' _hover={{ borderColor: 'none' }} focusBorderColor='#211F22' _focus={{ borderBottomColor: 'black' }} marginRight='2%'/>
-
-                </div>
-
-                <div className='register-row'>
-                <Input placeholder='Password' type='password' _placeholder={{ marginLeft: '8%', color: 'gray' }} borderColor='#211F22' borderBottomColor='black' borderRadius='0%' color='black' _hover={{ borderColor: 'none' }} focusBorderColor='#211F22' _focus={{ borderBottomColor: 'black' }} marginRight='2%'/>
-                <Input placeholder='Confirm Password' type='password' _placeholder={{ marginLeft: '8%', color: 'gray' }} borderColor='#211F22' borderBottomColor='black' borderRadius='0%' color='black' _hover={{ borderColor: 'none' }} focusBorderColor='#211F22' _focus={{ borderBottomColor: 'black' }} marginRight='2%'/>
-
-                </div>
-
-                <div className='register-bottom'>
-                    <div className='register-left'>
-                        <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                            <Button color='black' backgroundColor='#BC312E'>Register</Button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <form onSubmit={handleFormSubmit}>
+        {/* <div className="form-group">
+            <input type="text" className="form-control" placeholder='First Name' name='firstName' value={formState.firstName} aria-describedby="firstName" onChange={handleChange} />
         </div>
+        <div className="form-group">
+            <input type="text" className="form-control" placeholder='Last Name' name='lastName' value={formState.lastName} aria-describedby="lastName" onChange={handleChange} />
+        </div> */}
+        <div className="form-group">
+            <input type="email" className="form-control" placeholder='Email' name='email' value={formState.email} aria-describedby="emailHelp" onChange={handleChange} />
+        </div>
+        <div className="form-group">
+            <input type="password" className="form-control" placeholder='Password' name='password' value={formState.password} id="exampleInputPassword1" onChange={handleChange} />
+        </div>
+        <button type="submit" className="btn btn-primary">Submit</button>
+    </form>
     )
 }
 

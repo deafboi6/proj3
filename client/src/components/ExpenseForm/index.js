@@ -16,7 +16,6 @@ const ExpenseForm = () => {
       const { data } = await addExpense({
         variables: {
           //******SUBJECT TO CHANGE*******/
-          userId,
           expenseCategory,
           expenseAmount,
         },
@@ -59,7 +58,7 @@ const ExpenseForm = () => {
               <textarea
                 name="name"
                 placeholder="Expense price..."
-                value={name}
+                // value={name}
                 className=""
                 // style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
@@ -73,15 +72,6 @@ const ExpenseForm = () => {
             </div>
           </form>
         </>
-<<<<<<< Updated upstream
-=======
-      ) : (
-        <p>
-          You need to be logged in to add an expense. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
-      )}
->>>>>>> Stashed changes
     </div>
   );
 };

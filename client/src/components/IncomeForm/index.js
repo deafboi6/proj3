@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-
 import { ADD_INCOME } from '../../utils/mutations';
-
 const IncomeForm = () => {
-  const [incomeAmount, setIncomeAmount] = useState('');
-  
+  const [amount, setAmount] = useState('');
+  const [Month, setMonth] = useState('');
   const [addIncome, { error }] = useMutation(ADD_INCOME);
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const { data } = await addIncome({
         variables: {
@@ -19,21 +15,24 @@ const IncomeForm = () => {
           incomeAmount,
         },
       });
-
-      setIncomeAmount('');
+      setAmount('');
+      setMonth('');
     } catch (err) {
       console.error(err);
     }
   };
-
-  const handleChange = (event) => {
+  const handleAmountChange = (event) => {
     const { name } = event.target;
-
     if (name === 'incomeAmount') {
-      setIncomeAmount({ ...incomeAmount });
+      setAmount({ ...name.value });
     }
   };
-
+  const handleMonthChange = (event) => {
+    const { name } = event.target;
+    if (name === 'incomeMonth') {
+      setMonth({ ...name.value });
+    }
+  };
   return (
     <div>
       <h4>Add new income:</h4>
@@ -43,17 +42,29 @@ const IncomeForm = () => {
             onSubmit={handleFormSubmit}
           >
             <div className="">
-              <input type="text" id="incomeDate" name="incomeDate"/>
-              <textarea
+              <select id="Month" name="incomeMonth" onChange={handleMonthChange}>
+                <option value="january">January</option>
+                <option value="february">February</option>
+                <option value="march">March</option>
+                <option value="april">April</option>
+                <option value="may">May</option>
+                <option value="june">June</option>
+                <option value="july">July</option>
+                <option value="august">August</option>
+                <option value="september">September</option>
+                <option value="october">October</option>
+                <option value="november">November</option>
+                <option value="december">December</option>
+              </select>
+              <input
+                type="number"
                 name="incomeAmount"
                 placeholder="Income amount..."
-                value={incomeAmount}
+                // value={amount}
                 className=""
-                // style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleChange}
-              ></textarea>
+                onChange={handleAmountChange}
+              ></input>
             </div>
-
             <div className="">
               <button className="" type="submit">
                 Add Income
@@ -61,17 +72,7 @@ const IncomeForm = () => {
             </div>
           </form>
         </>
-<<<<<<< Updated upstream
-=======
-      ) : (
-        <p>
-          You need to be logged in to add income. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
-      )}
->>>>>>> Stashed changes
     </div>
   );
 };
-
 export default IncomeForm;
