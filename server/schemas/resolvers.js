@@ -2,13 +2,13 @@ const { Income, Expense, User } = require("../models");
 
 const resolvers = {
   Query: {
-    income: async () => {
+    Income: async () => {
       return Income.find({});
     },
-    expense: async () => {
+    Expense: async () => {
       return Expense.find({});
     },
-    user: async () => {
+    User: async () => {
       return User.find();
     },
   },
@@ -19,15 +19,16 @@ const resolvers = {
       return expense;
     },
     createIncome: async (parent, args) => {
-      const Income = await Income.create(args);
-      return Income;
+      const income = await Income.create(args);
+      return income;
     },
 
     addUser: async (parent, { email }) => {
       return User.create({ email });
     },
-    updateExpense: async (parent, { expenseId }) => {
-      return Expense.findOneAndUpdate({ _id: expenseId });
+    updateExpense: async (parent, { expenseId, name, price }) => {
+      console.log(expenseId);
+      return Expense.findByIdAndUpdate(expenseId, { name: name, price: price });
     },
     removeExpense: async (parent, { expenseId }) => {
       return Expense.findOneAndDelete({ _id: expenseId });
