@@ -32,10 +32,6 @@ function Signup() {
                         <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                             <Button color='black' backgroundColor='#BC312E'>Register</Button>
                         </div>
-
-                        <Link to='/Login'>
-                            <div className='register-newuser'>Already Registered?<label style={{ color: '#BC312E' }}>Login</label></div>
-                        </Link>
                     </div>
                 </div>
             </div>
