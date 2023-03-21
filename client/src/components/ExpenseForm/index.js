@@ -28,12 +28,19 @@ const ExpenseForm = () => {
     }
   };
 
-  const handleChange = (event) => {
+  const handlePriceChange = (event) => {
     const { name } = event.target;
 
-    if (name === 'name') {
-      setName({ ...name });
-      setPrice({ ...price });
+    if (name === 'expensePrice') {
+      setPrice({ ...name.value });
+    }
+  };
+
+  const handleNameChange = (event) => {
+    const { name } = event.target;
+
+    if (name === 'expenseName') {
+      setName({ ...name.value });
     }
   };
 
@@ -45,7 +52,7 @@ const ExpenseForm = () => {
             className=""
             onSubmit={handleFormSubmit}
           >
-            <select id="price" name="price">
+            <select id="price" name="expenseName" onChange={handleNameChange}>
               <option value="housing">Housing</option>
               <option value="groceries">Groceries</option>
               <option value="insurance">Insurance</option>
@@ -55,14 +62,14 @@ const ExpenseForm = () => {
               <option value="other">Other</option>
             </select>
             <div className="">
-              <textarea
-                name="name"
+              <input
+                type="number"
+                name="expensePrice"
                 placeholder="Expense price..."
-                value={name}
+                // value={price}
                 className=""
-                // style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleChange}
-              ></textarea>
+                onChange={handlePriceChange}
+              ></input>
             </div>
 
             <div className="">

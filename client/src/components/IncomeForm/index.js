@@ -28,12 +28,19 @@ const IncomeForm = () => {
     }
   };
 
-  const handleChange = (event) => {
+  const handleAmountChange = (event) => {
     const { name } = event.target;
 
     if (name === 'incomeAmount') {
-      setAmount({ ...amount });
-      setMonth({ ...Month });
+      setAmount({ ...name.value });
+    }
+  };
+
+  const handleMonthChange = (event) => {
+    const { name } = event.target;
+
+    if (name === 'incomeMonth') {
+      setMonth({ ...name.value });
     }
   };
 
@@ -46,7 +53,7 @@ const IncomeForm = () => {
             onSubmit={handleFormSubmit}
           >
             <div className="">
-              <select id="Month" name="Month">
+              <select id="Month" name="incomeMonth" onChange={handleMonthChange}>
                 <option value="january">January</option>
                 <option value="february">February</option>
                 <option value="march">March</option>
@@ -60,14 +67,14 @@ const IncomeForm = () => {
                 <option value="november">November</option>
                 <option value="december">December</option>
               </select>
-              <textarea
-                name="amount"
+              <input
+                type="number"
+                name="incomeAmount"
                 placeholder="Income amount..."
-                value={amount}
+                // value={amount}
                 className=""
-                // style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleChange}
-              ></textarea>
+                onChange={handleAmountChange}
+              ></input>
             </div>
 
             <div className="">
