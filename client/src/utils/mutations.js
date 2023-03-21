@@ -53,3 +53,11 @@ export const ADD_INCOME = gql`
     }
   }
 `;
+
+export const ADD_INCOME = gql`
+  mutation addIncome() {}
+`;
+
+export const ADD_INCOME = gql`
+  mutation addIncome() {}
+`;
