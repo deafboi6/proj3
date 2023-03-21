@@ -61,15 +61,6 @@ const IncomeForm = () => {
             </div>
           </form>
         </>
-<<<<<<< Updated upstream
-=======
-      ) : (
-        <p>
-          You need to be logged in to add income. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
-      )}
->>>>>>> Stashed changes
     </div>
   );
 };

@@ -73,18 +73,7 @@ const ExpenseForm = () => {
             </div>
           </form>
         </>
-<<<<<<< Updated upstream
-=======
-      ) : (
-        <p>
-          You need to be logged in to add an expense. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
-      )}
->>>>>>> Stashed changes
     </div>
-  );
-};
   );
 };
 
