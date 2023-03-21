@@ -11,8 +11,8 @@ const IncomeForm = () => {
       const { data } = await addIncome({
         variables: {
           //******SUBJECT TO CHANGE*******/
-          userId,
-          incomeAmount,
+          amount,
+          Month
         },
       });
       setAmount('');
