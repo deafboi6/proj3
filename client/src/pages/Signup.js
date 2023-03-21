@@ -5,14 +5,14 @@ import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 
 function Signup() {
-
-        const [formState, setFormState] = useState({
-            firstName: '',
-            lastName: '',
-            email: '',
-            password: '',
-        });
-        const [addUser, { error, data }] = useMutation(ADD_USER);
+    const [formState, setFormState] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+    });
+    
+    const [addUser, { error, data }] = useMutation(ADD_USER);
     
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -31,11 +31,12 @@ function Signup() {
             const { data } = await addUser({
                 variables: { ...formState }
             });
-
+            
             Auth.login(data.addUser.token);
         } catch (err) {
+            console.log("failed in signup form, try/catch");
             console.error(err);
-        }
+        };
     };
 
     return (
