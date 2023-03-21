@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className="">
+      <h4>Contact Us!</h4>
       <ul>
         <li><Link to="https://github.com/ArturoSer">Arturo's GitHub</Link></li>
         <li><Link to="https://github.com/walleric23">Eric's GitHub</Link></li>
