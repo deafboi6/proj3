@@ -33,7 +33,7 @@ function Login(props) {
     return (
         <div className='border mx-auto rounded bg-secondary mb-5'>
         <form onSubmit={handleFormSubmit} className="mx-auto w-50">
-            <h2 className='text-white header2'>Sign-up!</h2>
+            <h2 className='text-white header2'>Login!</h2>
         <div className="form-contents mb-3">
             <input type="email" className="form-control" placeholder='Email' name='email' value={formState.email} aria-describedby="emailHelp" id='email' onChange={handleChange} />
         </div>

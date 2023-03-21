@@ -38,7 +38,7 @@ function Signup() {
     return (
         <div  className='border mx-auto rounded bg-secondary'>
     <form onSubmit={handleFormSubmit} className="mx-auto w-50">
-        <h2 className='text-white'>Login!</h2>
+        <h2 className='text-white'>Sign Up!</h2>
         <div className="form-contents mb-3">
             <input type="email" className="form-control" placeholder='Email' name='email' value={formState.email} aria-describedby="emailHelp" onChange={handleChange} />
         </div>
