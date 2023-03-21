@@ -15,7 +15,7 @@ const Header = () => {
           <p className="">
             A budget tracker guaranteed to make you a millionaire.*
           </p>
-          <p> {format(new Date(), "do MMMM")} </p>
+          {/* <p> {format(new Date(), "do MMMM")} </p> */}
         </div>
         <div>
           <>
