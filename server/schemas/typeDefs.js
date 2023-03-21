@@ -35,6 +35,7 @@ const typeDefs = `#graphql
     addUser(email: String!, password: String!): Auth
     updateExpense(expenseId: ID!, name: String!, price: Int!): Expense
     removeExpense(expenseId: ID!): Expense
+    login(email: String!, password: String!): Auth
   }
 `;
 
