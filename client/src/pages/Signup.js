@@ -22,21 +22,19 @@ function Signup() {
             [name]: value
         });
     };
-    
+
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
-
-        try {
-            const { data } = await addUser({
-                ...formState
-            });
-            console.log(data);
-            Auth.login(data.addUser.token);
-        } catch (err) {
-            console.log("failed in signup form, try/catch");
-            console.error(err);
-        };
+        const mutationResponse = await addUser({
+            variables: {
+                email: formState.email,
+                password: formState.password,
+                // firstName: formState.firstName,
+                // lastName: formState.lastName,
+            },
+        });
+        const token = mutationResponse.data.addUser.token;
+        Auth.login(token);
     };
 
     return (
