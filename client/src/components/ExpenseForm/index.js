@@ -75,5 +75,7 @@ const ExpenseForm = () => {
     </div>
   );
 };
+  );
+};
 
 export default ExpenseForm;
