@@ -1,4 +1,5 @@
 const { Income, Expense, User } = require("../models");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -23,8 +24,11 @@ const resolvers = {
       return income;
     },
 
-    addUser: async (parent, { email }) => {
-      return User.create({ email });
+    addUser: async (parent, args) => {
+      const user = User.create(args);
+      const token = signToken(user);
+
+      return { token, user };
     },
     updateExpense: async (parent, { expenseId, name, price }) => {
       console.log(expenseId);

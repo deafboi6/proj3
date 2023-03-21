@@ -6,8 +6,8 @@ import { useMutation } from '@apollo/client';
 
 function Signup() {
     const [formState, setFormState] = useState({
-        firstName: '',
-        lastName: '',
+        // firstName: '',
+        // lastName: '',
         email: '',
         password: '',
     });
@@ -29,9 +29,9 @@ function Signup() {
 
         try {
             const { data } = await addUser({
-                variables: { ...formState }
+                ...formState
             });
-            
+            console.log(data);
             Auth.login(data.addUser.token);
         } catch (err) {
             console.log("failed in signup form, try/catch");
@@ -41,12 +41,12 @@ function Signup() {
 
     return (
     <form onSubmit={handleFormSubmit}>
-        <div className="form-group">
+        {/* <div className="form-group">
             <input type="text" className="form-control" placeholder='First Name' name='firstName' value={formState.firstName} aria-describedby="firstName" onChange={handleChange} />
         </div>
         <div className="form-group">
             <input type="text" className="form-control" placeholder='Last Name' name='lastName' value={formState.lastName} aria-describedby="lastName" onChange={handleChange} />
-        </div>
+        </div> */}
         <div className="form-group">
             <input type="email" className="form-control" placeholder='Email' name='email' value={formState.email} aria-describedby="emailHelp" onChange={handleChange} />
         </div>
