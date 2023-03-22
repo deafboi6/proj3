@@ -1,42 +1,14 @@
-.login-outer {
-    width: 75%;
-    display: flex;
-    justify-content: center;
-    height: 100vh;
+.btn {
+    background-color: rgb(109, 206, 206);
+    color: rgb(255, 255, 255);
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
 }
-
-.login-box {
-    margin-top: 40%;
-    padding: 4%;
-    display: flex;
-    width: 70%;
-    align-items: flex-start;
-    background-color: rgb(97, 93, 93);
-    height: 60%;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.login-box-title {
-    font-size: 2.5rem;
-    font-weight: 500;
-}
-
-.login-forget {
-    width: 100%;
-    display: flex;
-    justify-content: right;
-    font-size: 1rem;
-    color: purple;
-}
-
-.login-newuser {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    color: white;
+.btn:hover {
+    opacity: .8;
 }
 
 @media only screen and (max-width: 1300px) {

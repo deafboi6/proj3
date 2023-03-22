@@ -1,6 +1,7 @@
 import React from "react";
 import { format } from "date-fns";
 import Auth from "../../utils/auth";
+import './index.css';
 
 const Header = () => {
   const logout = (event) => {
