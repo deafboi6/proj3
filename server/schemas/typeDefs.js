@@ -1,7 +1,7 @@
 const typeDefs = `#graphql
   type Income {
     _id: ID
-    amount: Int!
+    amount: String!
     month: String
 
   }
@@ -16,8 +16,8 @@ const typeDefs = `#graphql
     _id: ID
     email: String!
     password: String!
-    expenses: [String]
-    income: [String]
+    expenses: [Expense]
+    income: [Income]
   }
 
   type Auth {
@@ -28,12 +28,12 @@ const typeDefs = `#graphql
   type Query {
     Income: [Income]
     Expense: [Expense]
-    User: [User]
+    User: User
   }
 
   type Mutation {
     addExpense(name: String!, price: String!): Expense
-    addIncome(amount: Int!, month: String!): User
+    addIncome(amount: String!, month: String!): Income
     addUser(email: String!, password: String!): Auth
     updateExpense(expenseId: ID!, name: String!, price: Int!): Expense
     removeExpense(expenseId: ID!): Expense

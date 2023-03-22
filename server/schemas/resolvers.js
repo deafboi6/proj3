@@ -12,7 +12,7 @@ const resolvers = {
     },
     User: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user.id);
+        const user = await User.findById(context.user._id);
         return user;
       }
       throw new AuthenticationError("Not logged in!");
@@ -32,11 +32,12 @@ const resolvers = {
     },
     addIncome: async (parent, args, context) => {
       if (context.user) {
-        const income = new Income({ amount: args.amount, month: args.month });
-
-        await User.findByIdAndUpdate(context.user.id, {
-          $push: { income: income }
+        const userUpdateUser = await User.findByIdAndUpdate(context.user._id, {
+          $addToSet: { income: { month: args.month, amount: args.amount } },
+          upsert: true
         });
+        console.log(userUpdateUser);
+        return userUpdateUser;
       }
       throw new AuthenticationError("Not logged in");
     },
