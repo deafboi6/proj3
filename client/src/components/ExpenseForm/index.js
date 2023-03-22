@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import "./expenseF.css";
 
 import { ADD_EXPENSE } from '../../utils/mutations';
 

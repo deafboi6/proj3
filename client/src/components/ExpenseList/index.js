@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_EXPENSES } from "../../utils/queries";
+//import "./expense.css";
 
 const ExpenseList = () => {
   const { loading, data, error } = useQuery(QUERY_EXPENSES);
@@ -22,7 +23,7 @@ const ExpenseList = () => {
             <div key={expenses.id}>
               <h4>{expenses.name}</h4>
               <ul>
-                <li>${expenses.price}</li>
+                <li id="expense">${expenses.price}</li>
               </ul>
             </div>
           );

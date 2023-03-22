@@ -1,5 +1,8 @@
 .border {
     width: 70%;
-    background-color: green;
+}
+
+body {
+    background-color: rgb(224, 157, 157);
 }
 
