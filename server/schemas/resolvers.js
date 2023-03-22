@@ -1,5 +1,6 @@
 const { Income, Expense, User } = require("../models");
 const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require("apollo-server-express");
 
 const resolvers = {
   Query: {
@@ -9,19 +10,35 @@ const resolvers = {
     Expense: async () => {
       return Expense.find({});
     },
-    User: async () => {
-      return User.find();
+    User: async (parent, args, context) => {
+      if (context.user) {
+        const user = await User.findById(context.user.id);
+        return user;
+      }
+      throw new AuthenticationError("Not logged in!");
     },
   },
 
   Mutation: {
-    createExpense: async (parent, args) => {
-      const expense = await Expense.create(args);
-      return expense;
+    addExpense: async (parent, args, context) => {
+      if (context.user) {
+        const userUpdateUser = await User.findByIdAndUpdate(context.user._id, {
+          $push: { expenses: { name: args.name, price: args.price } }
+        });
+        console.log(userUpdateUser);
+        return userUpdateUser;
+      }
+      throw new AuthenticationError("Not logged in");
     },
-    createIncome: async (parent, args) => {
-      const income = await Income.create(args);
-      return income;
+    addIncome: async (parent, args, context) => {
+      if (context.user) {
+        const income = new Income({ amount: args.amount, month: args.month });
+
+        await User.findByIdAndUpdate(context.user.id, {
+          $push: { income: income }
+        });
+      }
+      throw new AuthenticationError("Not logged in");
     },
 
     addUser: async (parent, args) => {

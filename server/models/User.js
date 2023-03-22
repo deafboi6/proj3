@@ -1,5 +1,7 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
+const Expense = require("./Expense");
+const Income = require("./Income");
 
 const userSchema = new Schema({
   email: {
@@ -13,6 +15,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+
+  expenses: [Expense.schema],
+
+  income: [Income.schema]
 });
 
 userSchema.pre("save", async function (next) {

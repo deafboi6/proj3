@@ -4,8 +4,10 @@ import { useMutation } from '@apollo/client';
 import { ADD_EXPENSE } from '../../utils/mutations';
 
 const ExpenseForm = () => {
-  const [expenseAmount, setExpenseAmount] = useState('');
-  const [expenseCategory, setExpenseCategory] = useState('');
+  const [formState, setFormState] = useState({
+    name: '',
+    price: ''
+  });
   
   const [addExpense, { error }] = useMutation(ADD_EXPENSE);
 
@@ -13,28 +15,22 @@ const ExpenseForm = () => {
     event.preventDefault();
 
     try {
-      const { data } = await addExpense({
-        variables: {
-          //******SUBJECT TO CHANGE*******/
-          expenseCategory,
-          expenseAmount,
-        },
+      const { data } = addExpense({
+        variables: { ...formState }
       });
-
-      setExpenseAmount('');
-      setExpenseCategory('');
+      console.log(formState);
     } catch (err) {
       console.error(err);
     }
   };
 
   const handleChange = (event) => {
-    const { name } = event.target;
+    const { name, value } = event.target;
 
-    if (name === 'expenseAmount') {
-      setExpenseAmount({ ...expenseAmount });
-      setExpenseCategory({ ...expenseCategory });
-    }
+    setFormState({
+      ...formState,
+      [name]: value
+    })
   };
 
   return (
@@ -45,7 +41,7 @@ const ExpenseForm = () => {
             className=""
             onSubmit={handleFormSubmit}
           >
-            <select id="expenseCategory" name="expenseCategory">
+            {/* <select id="expenseCategory" name="name" onChange={handleChange}>
               <option value="housing">Housing</option>
               <option value="groceries">Groceries</option>
               <option value="insurance">Insurance</option>
@@ -53,16 +49,17 @@ const ExpenseForm = () => {
               <option value="utilities">Utilities</option>
               <option value="savings">Savings</option>
               <option value="other">Other</option>
-            </select>
+            </select> */}
+            <input name='name' placeholder='Expense Category' onChange={handleChange}/>
             <div className="">
-              <textarea
-                name="name"
+              <input
+                name="price"
                 placeholder="Expense price..."
                 // value={name}
                 className=""
                 // style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
-              ></textarea>
+              />
             </div>
 
             <div className="">

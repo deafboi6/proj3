@@ -15,6 +15,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Auth from "./utils/auth";
 
+import "./App.css";
+
 const httpLink = createHttpLink({
     uri: "/graphql"
 });
@@ -41,7 +43,7 @@ export default function App() {
         {Auth.loggedIn() ? (
             <div>
             <Header />
-            <div className="h-25 w-25">
+            <div>
                 <PieChart />
             </div>
             <div>
