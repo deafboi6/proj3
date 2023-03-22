@@ -4,7 +4,7 @@ import { ADD_INCOME } from "../../utils/mutations";
 const IncomeForm = () => {
   const [formState, setFormState] = useState({
     amount: '',
-    month: ''
+    month: 'select'
   });
 
   const [addIncome, { error }] = useMutation(ADD_INCOME);
@@ -20,7 +20,22 @@ const IncomeForm = () => {
     } catch (err) {
       console.error(err);
     }
+
+    setFormState({
+      amount: '',
+      month: 'select'
+    })
   };
+
+  const handleSelect = (event) => {
+    console.log(event.target.value);
+
+    setFormState({
+      ...formState,
+      month: event.target.value
+    });
+  };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -38,7 +53,8 @@ const IncomeForm = () => {
             onSubmit={handleFormSubmit}
           >
             <div className="">
-              {/* <select id="month" name="month" onChange={handlemonthChange}>
+              <select id="month" name="month" value={formState.month} onChange={handleSelect}>
+                <option disabled selected value="select">Choose month...</option>
                 <option value="january">January</option>
                 <option value="february">February</option>
                 <option value="march">March</option>
@@ -51,13 +67,13 @@ const IncomeForm = () => {
                 <option value="october">October</option>
                 <option value="november">November</option>
                 <option value="december">December</option>
-              </select> */}
-              <input name='month' placeholder='month' onChange={handleChange}/>
+              </select>
+              {/* <input name='month' placeholder='month' onChange={handleChange}/> */}
               <input
                 type="number"
                 name="amount"
                 placeholder="Income amount..."
-                // value={amount}
+                value={formState.amount}
                 className=""
                 onChange={handleChange}
               />

@@ -5,6 +5,8 @@ import {
     Tooltip,
     Legend
     } from "chart.js";
+import { QUERY_EXPENSES } from "./queries";
+import { useQuery } from "@apollo/client";
 
 ChartJS.register(
     ArcElement,
@@ -13,6 +15,8 @@ ChartJS.register(
 );
 
 const PieChart = () => {
+    const { loading, data, error, status } = useQuery(QUERY_EXPENSES);
+    console.log(data);
     const housing = [];
     const groceries = [];
     const insurance = [];
@@ -23,7 +27,7 @@ const PieChart = () => {
 
     const labels = ["Housing", "Groceries", "Insurance", "Car payment", "Utilities", "Savings", "Other"]
 
-    const data = {
+    const dataVals = {
         labels: labels,
         datasets: [{
             data: [housing, groceries, insurance, carPayment, utilities, savings, other],
@@ -47,7 +51,7 @@ const PieChart = () => {
 
     return (
         <div style={{width:'25%', height:"25%"}}>
-            <Pie data={data} options={options} />
+            <Pie data={dataVals} options={options} />
         </div>
     );
 };
