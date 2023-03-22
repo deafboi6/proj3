@@ -1,3 +1,5 @@
+require("dotenv").config();
+const path = require("path");
 const express = require("express");
 // Import the ApolloServer class
 const { ApolloServer } = require("@apollo/server");
@@ -21,7 +23,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
-  context: authMiddleware
+  context: authMiddleware,
 });
 
 app.use(express.urlencoded({ extended: false }));
