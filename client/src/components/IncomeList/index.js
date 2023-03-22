@@ -1,26 +1,33 @@
 import React from 'react';
+import { useQuery } from "@apollo/client";
+import { QUERY_INCOMES } from "../../utils/queries";
 
-const IncomeList = ({ incomes = [] }) => {
-  if (!incomes.length) {
-    return <h3>No Expenses Yet</h3>
+const IncomeList = () => {
+  const { loading, data, error } = useQuery(QUERY_INCOMES);
+  console.log(data);
+  
+  if (loading) {
+    return <p>Loading... {loading}</p>;
+  }
+  if (error) {
+    return <p>Error! ${error}</p>;
   }
 
   return (
-    <div>
-      <>
-        <h3 className="">Income</h3>
-        <div className="">
-          {incomes &&
-            incomes.map((income) => (
-              <div key={income._id} className="">
-                <h5 className="">{income.month}</h5>
-                <ul>
-                  <li>{income.amount}</li>
-                </ul>
-              </div>
-            ))}
-        </div>
-      </>
+    <div className="">
+      <div>
+        {data?.User?.income?.map((income) => {
+          console.log("this is the expense", income);
+          return (
+            <div key={income.id}>
+              <h4>{income.month}</h4>
+              <ul>
+                <li>${income.amount}</li>
+              </ul>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

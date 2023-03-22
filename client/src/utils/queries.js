@@ -33,10 +33,12 @@ export const QUERY_EXPENSES = gql`
 
 export const QUERY_INCOMES = gql`
   query getIncomes {
-    incomes {
-      _id
-      amount
-      month
+    User {
+      income {
+        _id
+        amount
+        month
+      }
     }
   }
 `;

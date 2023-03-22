@@ -16,7 +16,7 @@ ChartJS.register(
 
 const PieChart = () => {
     const { loading, data, error, status } = useQuery(QUERY_EXPENSES);
-    console.log(data);
+    // console.log(data);
     const housing = [];
     const groceries = [];
     const insurance = [];

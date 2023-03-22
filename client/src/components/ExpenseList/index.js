@@ -1,28 +1,33 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Auth from '../../utils/auth';
+import React from "react";
+import { useQuery } from "@apollo/client";
+import { QUERY_EXPENSES } from "../../utils/queries";
 
-const ExpenseList = ({ expenses = [] }) => {
-  if (!expenses.length) {
-    return <h3>No Expenses Yet</h3>
+const ExpenseList = () => {
+  const { loading, data, error } = useQuery(QUERY_EXPENSES);
+  console.log(data);
+
+  if (loading) {
+    return <p>Loading... {loading}</p>;
+  }
+  if (error) {
+    return <p>Error! ${error}</p>;
   }
 
   return (
-    <div>
-      <>
-        <h3 className="">Expenses</h3>
-        <div className="">
-          {expenses &&
-            expenses.map((expense) => (
-              <div key={expense._id} className="">
-                <h5 className="">{expense.name}</h5>
-                <ul>
-                  <li>{expense.price}</li>
-                </ul>
-              </div>
-            ))}
-        </div>
-      </>
+    <div className="">
+      <div>
+        {data?.User?.expenses?.map((expenses) => {
+          console.log("this is the expense", expenses);
+          return (
+            <div key={expenses.id}>
+              <h4>{expenses.name}</h4>
+              <ul>
+                <li>${expenses.price}</li>
+              </ul>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
