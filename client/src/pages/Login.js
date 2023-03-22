@@ -1,23 +1,46 @@
-import React from 'react'
-import './signup.css'
-import { Input } from '@chakra-ui/react'
-import { Button } from '@chakra-ui/react'
-import { NavLink as Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import './signup.css';
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../utils/mutations';
+import Auth from '../utils/auth';
 
-function Login() {
+function Login(props) {
+    const [formState, setFormState] = useState({ email: '', password: '' });
+    const [login, { error }] = useMutation(LOGIN);
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormState({
+            ...formState,
+            [name]: value,
+        });
+    };
+
+    const handleFormSubmit = async (event) => {
+    event.preventDefault();
+        try {
+            const mutationResponse = await login({
+            variables: { email: formState.email, password: formState.password },
+        });
+            console.log(mutationResponse);
+            const token = mutationResponse.data.login.token;
+            Auth.login(token);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     return (
-        <div className='login-outer'>
-            <div className='login-box'>
-                <div className='login-box-title' style={{ color: 'black' }}>Login</div>
-                <Input placeholder='Email' _placeholder={{ marginLeft: '8%', color: 'gray' }} borderColor='#211F22' borderBottomColor='black' borderRadius='0%' color='black' _hover={{ borderColor: 'none' }} focusBorderColor='#211F22' _focus={{ borderBottomColor: 'black' }} marginRight='2%'/>
-                <Input placeholder='Password' type='password' _placeholder={{ marginLeft: '8%', color: 'gray' }} borderColor='#211F22' borderBottomColor='black' borderRadius='0%' color='black' _hover={{ borderColor: 'none' }} focusBorderColor='#211F22' _focus={{ borderBottomColor: 'black' }} marginRight='2%'/>
-                <div className='login-forget'>Forgot Password</div>
-                <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                    <Button color='black' backgroundColor='#BC312E'>Login</Button>
-                </div>
-            </div>
+        <form onSubmit={handleFormSubmit}>
+        <div className="form-group">
+            <input type="email" className="form-control" placeholder='Email' name='email' value={formState.email} aria-describedby="emailHelp" id='email' onChange={handleChange} />
         </div>
+        <div className="form-group">
+            <input type="password" className="form-control" placeholder='Password' name='password' value={formState.password} id="pwd" onChange={handleChange} />
+        </div>
+        <button type="submit" className="btn btn-primary">Submit</button>
+    </form>
     )
-}
+};
 
 export default Login;
