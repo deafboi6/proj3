@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
   query user($email: String!) {
@@ -13,7 +13,7 @@ export const QUERY_USER = gql`
       incomes {
         _id
         amount
-        Month
+        month
       }
     }
   }
@@ -34,7 +34,7 @@ export const QUERY_INCOMES = gql`
     incomes {
       _id
       amount
-      Month
+      month
     }
   }
 `;
@@ -52,7 +52,7 @@ export const QUERY_ME = gql`
       incomes {
         _id
         amount
-        Month
+        month
       }
     }
   }
