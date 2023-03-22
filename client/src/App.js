@@ -43,7 +43,7 @@ export default function App() {
         {Auth.loggedIn() ? (
             <div>
             <Header />
-            <div className="h-25 w-25">
+            <div>
                 <PieChart />
             </div>
             <div>

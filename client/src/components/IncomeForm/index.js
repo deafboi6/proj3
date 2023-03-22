@@ -2,37 +2,33 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_INCOME } from '../../utils/mutations';
 const IncomeForm = () => {
-  const [amount, setAmount] = useState('');
-  const [Month, setMonth] = useState('');
+  const [formState, setFormState] = useState({
+    amount: '',
+    month: ''
+  });
+
   const [addIncome, { error }] = useMutation(ADD_INCOME);
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
     try {
-      const { data } = await addIncome({
-        variables: {
-          //******SUBJECT TO CHANGE*******/
-          amount,
-          Month
-        },
+      const { data } = addIncome({
+        variables: { ...formState },
       });
-      setAmount('');
-      setMonth('');
+      console.log(formState);
     } catch (err) {
       console.error(err);
     }
   };
-  const handleAmountChange = (event) => {
-    const { name } = event.target;
-    if (name === 'incomeAmount') {
-      setAmount({ ...name.value });
-    }
-  };
-  const handleMonthChange = (event) => {
-    const { name } = event.target;
-    if (name === 'incomeMonth') {
-      setMonth({ ...name.value });
-    }
-  };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value
+    });
+  }
   return (
     <div>
       <h4>Add new income:</h4>
@@ -42,7 +38,7 @@ const IncomeForm = () => {
             onSubmit={handleFormSubmit}
           >
             <div className="">
-              <select id="Month" name="incomeMonth" onChange={handleMonthChange}>
+              {/* <select id="month" name="month" onChange={handlemonthChange}>
                 <option value="january">January</option>
                 <option value="february">February</option>
                 <option value="march">March</option>
@@ -55,15 +51,16 @@ const IncomeForm = () => {
                 <option value="october">October</option>
                 <option value="november">November</option>
                 <option value="december">December</option>
-              </select>
+              </select> */}
+              <input name='month' placeholder='month' onChange={handleChange}/>
               <input
                 type="number"
-                name="incomeAmount"
+                name="amount"
                 placeholder="Income amount..."
                 // value={amount}
                 className=""
-                onChange={handleAmountChange}
-              ></input>
+                onChange={handleChange}
+              />
             </div>
             <div className="">
               <button className="" type="submit">
