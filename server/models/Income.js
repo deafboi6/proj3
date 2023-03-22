@@ -8,6 +8,7 @@ const incomeSchema = new Schema({
   month: {
     type: String,
     required: true,
+    unique: true
   },
 });
 

@@ -41,8 +41,8 @@ export const ADD_EXPENSE = gql`
 `;
 
 export const ADD_INCOME = gql`
-  mutation addIncome($amount: Number, $month: String) {
-    addIncome( 
+  mutation addIncome($amount: String!, $month: String!) {
+    addIncome(
       amount: $amount,
       month: $month
     ) {
