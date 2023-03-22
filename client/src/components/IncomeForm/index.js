@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_INCOME } from "../../utils/mutations";
+import "./income.css";
 const IncomeForm = () => {
   const [formState, setFormState] = useState({
     amount: '',

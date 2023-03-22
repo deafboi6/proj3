@@ -1,0 +1,24 @@
+form {
+    align-content: inherit;
+    width: 500px;
+    margin: 3px;
+    background-color: rgb(200, 177, 234);
+    padding: 5%;
+    padding: 5px 0px;
+    box-shadow: 4px 4px 1px -1px rgba(0, 0, 0, 0.2),
+                0px 1px 1px 0px rgba(0, 0, 0, 0.2),
+                0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+button {
+    width: 200px;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 20px;
+    background-color: #04BF8A;
+    border-radius: 5px;
+    margin: 14px 25%;
+    cursor: pointer;
+}
