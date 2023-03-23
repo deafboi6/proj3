@@ -34,39 +34,42 @@ const PieChart = () => {
     const other = [];
 
 
-    // const newUserData = data.User;
-    // console.log(newUserData);
-    // const ifStatement = () => {
-    //     for (let i = 0; i < newUserData.length; i++) {
-    //         const userData = newUserData[i].price;
-    //         const catName = newUserData[i].name;
-    //         console.log(catName);
+    const newUserData = data.User;
+    console.log(newUserData);
+    // this is the problem
+    console.log(newUserData.length);
+    const ifStatement = () => {
+        console.log("it reaches ifStatement");
+        for (let i = 0; i < newUserData.length; i++) {
+            const userData = newUserData[i].price;
+            const catName = newUserData[i].name;
+            console.log(catName);
             
-    //         if (catName === "Housing") {
-    //             housing.push(userData);
-    //             console.log(userData);
-    //         } else if (catName === "Groceries") {
-    //             groceries.push(userData)
-    //         } else if (catName === "Insurance") {
-    //             insurance.push(userData) 
-    //         } else if (catName === "CarPayment") {
-    //             carPayment.push(userData)
-    //         } else if (catName === "Utilities") {
-    //             utilities.push(userData) 
-    //         } else if (catName === "Savings") {
-    //             savings.push(userData)
-    //         } else if (catName === "Other") {
-    //             other.push(userData)
-    //         };
-    //     };
-    // };
+            if (catName === "Housing") {
+                housing.push(userData);
+                console.log(userData);
+            } else if (catName === "Groceries") {
+                groceries.push(userData)
+            } else if (catName === "Insurance") {
+                insurance.push(userData) 
+            } else if (catName === "CarPayment") {
+                carPayment.push(userData)
+            } else if (catName === "Utilities") {
+                utilities.push(userData) 
+            } else if (catName === "Savings") {
+                savings.push(userData)
+            } else if (catName === "Other") {
+                other.push(userData)
+            };
+        };
+    };
 
-    // if (newUserData === null) {
-    //     console.log("data is considered empty");
-    // } else {
-    //     console.log("it reaches the else statement");
-    //     ifStatement();
-    // };
+    if (newUserData === null) {
+        console.log("data is considered empty");
+    } else {
+        console.log("it reaches the else statement");
+        ifStatement();
+    };
     
 
     const labels = ["Housing", "Groceries", "Insurance", "Car payment", "Utilities", "Savings", "Other"]
