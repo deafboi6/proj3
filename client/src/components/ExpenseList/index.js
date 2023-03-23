@@ -19,9 +19,14 @@ const ExpenseList = () => {
       <div>
         {data?.User?.expenses?.map((expenses) => {
           console.log("this is the expense", expenses);
+          let expenseName = expenses.name
+          function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+          }
+          let capExpenseName = capitalizeFirstLetter(expenseName)
           return (
             <div key={expenses.id}>
-              <h4>{expenses.name}</h4>
+              <h4>{capExpenseName}</h4>
               <ul>
                 <li id="expense">${expenses.price}</li>
               </ul>
