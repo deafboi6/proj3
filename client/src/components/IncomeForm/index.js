@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_INCOME } from "../../utils/mutations";
+import "./income.css";
 const IncomeForm = () => {
   const [formState, setFormState] = useState({
     amount: '',
@@ -24,7 +25,8 @@ const IncomeForm = () => {
     setFormState({
       amount: '',
       month: 'select'
-    })
+    });
+    window.location.reload();
   };
 
   const handleSelect = (event) => {
@@ -55,18 +57,18 @@ const IncomeForm = () => {
             <div className="">
               <select id="month" name="month" value={formState.month} onChange={handleSelect}>
                 <option disabled selected value="select">Choose month...</option>
-                <option value="january">January</option>
-                <option value="february">February</option>
-                <option value="march">March</option>
-                <option value="april">April</option>
-                <option value="may">May</option>
-                <option value="june">June</option>
-                <option value="july">July</option>
-                <option value="august">August</option>
-                <option value="september">September</option>
-                <option value="october">October</option>
-                <option value="november">November</option>
-                <option value="december">December</option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
               </select>
               {/* <input name='month' placeholder='month' onChange={handleChange}/> */}
               <input
