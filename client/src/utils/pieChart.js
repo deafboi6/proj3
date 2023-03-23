@@ -33,32 +33,32 @@ const PieChart = () => {
     const savings = [];
     const other = [];
 
-    // const newUserData = data.User.expenses;
+    const newUserData = data.User.expenses;
     // console.log(newUserData);
     // console.log(newUserData.length);
     // const housing = data.User.expenses[0].price;
-    // for (let i = 0; i < newUserData.length; i++) {
-    //     const userData = newUserData[i].price;
-    //     const catName = newUserData[i].name;
-    //     console.log(catName);
+    for (let i = 0; i < newUserData.length; i++) {
+        const userData = newUserData[i].price;
+        const catName = newUserData[i].name;
+        console.log(catName);
         
-    //     if (catName === "housing") {
-    //         housing.push(userData);
-    //         console.log(userData);
-    //     } else if (catName === "groceries") {
-    //         groceries.push(userData)
-    //     } else if (catName === "insurance") {
-    //         insurance.push(userData) 
-    //     } else if (catName === "carPayment") {
-    //         carPayment.push(userData)
-    //     } else if (catName === "utilities") {
-    //         utilities.push(userData) 
-    //     } else if (catName === "savings") {
-    //         savings.push(userData)
-    //     } else if (catName === "other") {
-    //         other.push(userData)
-    //     };
-    // };
+        if (catName === "Housing") {
+            housing.push(userData);
+            console.log(userData);
+        } else if (catName === "Groceries") {
+            groceries.push(userData)
+        } else if (catName === "Insurance") {
+            insurance.push(userData) 
+        } else if (catName === "CarPayment") {
+            carPayment.push(userData)
+        } else if (catName === "Utilities") {
+            utilities.push(userData) 
+        } else if (catName === "Savings") {
+            savings.push(userData)
+        } else if (catName === "Other") {
+            other.push(userData)
+        };
+    };
 
     const labels = ["Housing", "Groceries", "Insurance", "Car payment", "Utilities", "Savings", "Other"]
 
