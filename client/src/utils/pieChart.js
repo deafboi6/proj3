@@ -16,8 +16,16 @@ ChartJS.register(
 
 const PieChart = () => {
     const { loading, data, error, status } = useQuery(QUERY_EXPENSES);
-    // console.log(data);
-    const housing = [];
+
+    if (loading) {
+        return <div></div>
+    }
+    if (error) {
+        return <p>Error! ${error}</p>
+    }
+
+    console.log(data);
+    const housing = data.User.expenses[0].price;
     const groceries = [];
     const insurance = [];
     const carPayment = [];
@@ -48,7 +56,6 @@ const PieChart = () => {
             // }
         }
     }
-
     return (
         <div style={{width:'25%', height:"25%"}}>
             <Pie data={dataVals} options={options} />
