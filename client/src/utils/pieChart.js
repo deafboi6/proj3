@@ -34,10 +34,10 @@ const PieChart = () => {
     const other = [];
 
 
-    const newUserData = data.User;
+    const newUserData = data.User.expenses;
     console.log(newUserData);
     // this is the problem
-    console.log(newUserData.length);
+    // console.log(newUserData.expenses);
     const ifStatement = () => {
         console.log("it reaches ifStatement");
         for (let i = 0; i < newUserData.length; i++) {
@@ -52,7 +52,7 @@ const PieChart = () => {
                 groceries.push(userData)
             } else if (catName === "Insurance") {
                 insurance.push(userData) 
-            } else if (catName === "CarPayment") {
+            } else if (catName === "Car-payment") {
                 carPayment.push(userData)
             } else if (catName === "Utilities") {
                 utilities.push(userData) 
@@ -92,7 +92,7 @@ const PieChart = () => {
         }
     }
     return (
-        <div style={{width:'30%', height:"30%"}}>
+        <div style={{width:'25%', height:"25%"}}>
             <Pie data={dataVals} options={options} />
         </div>
     );
