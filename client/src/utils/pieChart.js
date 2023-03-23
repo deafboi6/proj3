@@ -19,7 +19,7 @@ const PieChart = () => {
     console.log(data);
 
     if (loading) {
-        return <div></div>
+        return <div>Loading... {loading}</div>
     }
     if (error) {
         return <p>Error! ${error}</p>
@@ -33,32 +33,44 @@ const PieChart = () => {
     const savings = [];
     const other = [];
 
-    // const newUserData = data.User.expenses;
-    // console.log(newUserData);
-    // console.log(newUserData.length);
-    // const housing = data.User.expenses[0].price;
-    // for (let i = 0; i < newUserData.length; i++) {
-    //     const userData = newUserData[i].price;
-    //     const catName = newUserData[i].name;
-    //     console.log(catName);
-        
-    //     if (catName === "housing") {
-    //         housing.push(userData);
-    //         console.log(userData);
-    //     } else if (catName === "groceries") {
-    //         groceries.push(userData)
-    //     } else if (catName === "insurance") {
-    //         insurance.push(userData) 
-    //     } else if (catName === "carPayment") {
-    //         carPayment.push(userData)
-    //     } else if (catName === "utilities") {
-    //         utilities.push(userData) 
-    //     } else if (catName === "savings") {
-    //         savings.push(userData)
-    //     } else if (catName === "other") {
-    //         other.push(userData)
-    //     };
-    // };
+
+    const newUserData = data.User.expenses;
+    console.log(newUserData);
+    // this is the problem
+    // console.log(newUserData.expenses);
+    const ifStatement = () => {
+        console.log("it reaches ifStatement");
+        for (let i = 0; i < newUserData.length; i++) {
+            const userData = newUserData[i].price;
+            const catName = newUserData[i].name;
+            console.log(catName);
+            
+            if (catName === "Housing") {
+                housing.push(userData);
+                console.log(userData);
+            } else if (catName === "Groceries") {
+                groceries.push(userData)
+            } else if (catName === "Insurance") {
+                insurance.push(userData) 
+            } else if (catName === "Car-payment") {
+                carPayment.push(userData)
+            } else if (catName === "Utilities") {
+                utilities.push(userData) 
+            } else if (catName === "Savings") {
+                savings.push(userData)
+            } else if (catName === "Other") {
+                other.push(userData)
+            };
+        };
+    };
+
+    if (newUserData === null) {
+        console.log("data is considered empty");
+    } else {
+        console.log("it reaches the else statement");
+        ifStatement();
+    };
+    
 
     const labels = ["Housing", "Groceries", "Insurance", "Car payment", "Utilities", "Savings", "Other"]
 
@@ -77,10 +89,6 @@ const PieChart = () => {
             legend: {
                 position: "bottom"
             },
-            // title: {
-            //     display: true,
-            //     text: "Expenses Chart"
-            // }
         }
     }
     return (

@@ -3,6 +3,7 @@ import './signup.css';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
+import { LOGIN } from '../utils/mutations';
 
 function Signup() {
     const [formState, setFormState] = useState({
@@ -13,6 +14,7 @@ function Signup() {
     });
     
     const [addUser, { error, data }] = useMutation(ADD_USER);
+    const [login, { error2 }] = useMutation(LOGIN);
     
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -31,7 +33,14 @@ function Signup() {
                 password: formState.password,
             },
         });
-        const token = mutationResponse.data.addUser.token;
+        console.log(mutationResponse);
+        const loginResponse = await login({
+            variables: {
+                email: formState.email,
+                password: formState.password
+            },
+        })
+        const token = loginResponse.data.login.token;
         Auth.login(token);
     };
 
