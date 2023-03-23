@@ -28,6 +28,7 @@ const ExpenseForm = () => {
       name: 'select',
       price: ''
     });
+    window.location.reload();
   };
 
   const handleSelect = (event) => {
@@ -59,13 +60,13 @@ const ExpenseForm = () => {
           >
             <select id="expenseCategory" name="name" value={formState.name} onChange={handleSelect}>
               <option disabled selected value="select">Choose category...</option>
-              <option value="housing">Housing</option>
-              <option value="groceries">Groceries</option>
-              <option value="insurance">Insurance</option>
-              <option value="car-payment">Car payment</option>
-              <option value="utilities">Utilities</option>
-              <option value="savings">Savings</option>
-              <option value="other">Other</option>
+              <option value="Housing">Housing</option>
+              <option value="Groceries">Groceries</option>
+              <option value="Insurance">Insurance</option>
+              <option value="Car-payment">Car payment</option>
+              <option value="Utilities">Utilities</option>
+              <option value="Savings">Savings</option>
+              <option value="Other">Other</option>
             </select>
             {/* <input name='name' placeholder='Expense Category' onChange={handleChange}/> */}
             <div className="">

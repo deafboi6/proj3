@@ -25,7 +25,8 @@ const IncomeForm = () => {
     setFormState({
       amount: '',
       month: 'select'
-    })
+    });
+    window.location.reload();
   };
 
   const handleSelect = (event) => {

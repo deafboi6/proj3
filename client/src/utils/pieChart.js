@@ -15,8 +15,16 @@ ChartJS.register(
 );
 
 const PieChart = () => {
-    const { loading, data, error, status } = useQuery(QUERY_EXPENSES);
-    // console.log(data);
+    const { loading, data, error } = useQuery(QUERY_EXPENSES);
+    console.log(data);
+
+    if (loading) {
+        return <div></div>
+    }
+    if (error) {
+        return <p>Error! ${error}</p>
+    }
+
     const housing = [];
     const groceries = [];
     const insurance = [];
@@ -24,6 +32,33 @@ const PieChart = () => {
     const utilities = [];
     const savings = [];
     const other = [];
+
+    const newUserData = data.User.expenses;
+    // console.log(newUserData);
+    // console.log(newUserData.length);
+    // const housing = data.User.expenses[0].price;
+    for (let i = 0; i < newUserData.length; i++) {
+        const userData = newUserData[i].price;
+        const catName = newUserData[i].name;
+        console.log(catName);
+        
+        if (catName === "housing") {
+            housing.push(userData);
+            console.log(userData);
+        } else if (catName === "groceries") {
+            groceries.push(userData)
+        } else if (catName === "insurance") {
+            insurance.push(userData) 
+        } else if (catName === "carPayment") {
+            carPayment.push(userData)
+        } else if (catName === "utilities") {
+            utilities.push(userData) 
+        } else if (catName === "savings") {
+            savings.push(userData)
+        } else if (catName === "other") {
+            other.push(userData)
+        };
+    };
 
     const labels = ["Housing", "Groceries", "Insurance", "Car payment", "Utilities", "Savings", "Other"]
 
@@ -48,7 +83,6 @@ const PieChart = () => {
             // }
         }
     }
-
     return (
         <div style={{width:'25%', height:"25%"}}>
             <Pie data={dataVals} options={options} />
