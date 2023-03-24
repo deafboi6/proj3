@@ -20,7 +20,7 @@ Input the following to start the app:
 
 ## Usage
 
-View the deployed application [here]()
+View the deployed application [here](https://proj3.herokuapp.com/)
 
 Simply use the sign up form to create a new user, or login if you already have an account.
 
