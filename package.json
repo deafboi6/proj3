@@ -1,0 +1,33 @@
+{
+  "name": "proj3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js --ignore client",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deafboi6/proj3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deafboi6/proj3/issues"
+  },
+  "homepage": "https://github.com/deafboi6/proj3#readme",
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "chart.js": "^4.2.1",
+    "date-fns": "^2.29.3",
+    "react-chartjs-2": "^5.2.0"
+  }
+}

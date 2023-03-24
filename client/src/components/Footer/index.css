@@ -1,0 +1,21 @@
+a:link {
+    color: red;
+}
+
+a:visited {
+    color: gray;
+}
+
+a:hover {
+    color: rgb(61, 203, 113);
+}
+
+li {
+    display: flex;
+    gap: 1.625%;
+}
+
+.logoutBtn {
+    float: left;
+    display: block;
+}

@@ -1,3 +1,5 @@
+require("dotenv").config();
+const path = require("path");
 const express = require("express");
 // Import the ApolloServer class
 const { ApolloServer } = require("@apollo/server");
@@ -7,6 +9,7 @@ const {
 } = require("@apollo/server/plugin/drainHttpServer");
 const http = require("http");
 
+const { authMiddleware } = require("./utils/auth");
 // Import the two parts of a GraphQL schema
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
@@ -20,6 +23,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+  context: authMiddleware,
 });
 
 app.use(express.urlencoded({ extended: false }));
@@ -39,7 +43,7 @@ const startApolloServer = async (typeDefs, resolvers) => {
   app.use(
     "/graphql",
     expressMiddleware(server, {
-      context: async ({ req }) => ({ token: req.headers.token }),
+      context: authMiddleware,
     })
   );
 

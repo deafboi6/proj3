@@ -1,0 +1,49 @@
+.btn {
+    background-color: rgb(109, 206, 206);
+    color: rgb(255, 255, 255);
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+}
+.btn:hover {
+    opacity: .8;
+}
+
+@media only screen and (max-width: 1300px) {
+    .login-box-title {
+        font-size: 2rem;
+    }
+    .login-box {
+        width: 45%;
+        height: 70%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .login-box-title {
+        font-size: 1.7rem;
+    }
+    .login-box {
+        width: 50%;
+        height: 70%;
+    }
+    .login-forget {
+        font-size: .75rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .login-box-title {
+        font-size: 1.7rem;
+    }
+    .login-box {
+        width: 150%;
+        height: 75%;
+    }
+    .login-forget {
+        font-size: 0.7rem;
+    }
+    
+}

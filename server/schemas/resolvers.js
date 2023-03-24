@@ -1,27 +1,76 @@
-const { Tech, Matchup } = require('../models');
+const { Income, Expense, User } = require("../models");
+const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require("apollo-server-express");
 
 const resolvers = {
   Query: {
-    tech: async () => {
-      return Tech.find({});
+    Income: async () => {
+      return Income.find({});
     },
-    matchups: async (parent, { _id }) => {
-      const params = _id ? { _id } : {};
-      return Matchup.find(params);
+    Expense: async () => {
+      return Expense.find({});
+    },
+    User: async (parent, args, context) => {
+      if (context.user) {
+        const user = await User.findById(context.user._id);
+        return user;
+      }
+      throw new AuthenticationError("Not logged in!");
     },
   },
+
   Mutation: {
-    createMatchup: async (parent, args) => {
-      const matchup = await Matchup.create(args);
-      return matchup;
+    addExpense: async (parent, args, context) => {
+      if (context.user) {
+        const userUpdateUser = await User.findByIdAndUpdate(context.user._id, {
+          $push: { expenses: { name: args.name, price: args.price } }
+        });
+        console.log(userUpdateUser);
+        return userUpdateUser;
+      }
+      throw new AuthenticationError("Not logged in");
     },
-    createVote: async (parent, { _id, techNum }) => {
-      const vote = await Matchup.findOneAndUpdate(
-        { _id },
-        { $inc: { [`tech${techNum}_votes`]: 1 } },
-        { new: true }
-      );
-      return vote;
+    addIncome: async (parent, args, context) => {
+      if (context.user) {
+        const userUpdateUser = await User.findByIdAndUpdate(context.user._id, {
+          $addToSet: { income: { month: args.month, amount: args.amount } },
+          upsert: true
+        });
+        console.log(userUpdateUser);
+        return userUpdateUser;
+      }
+      throw new AuthenticationError("Not logged in");
+    },
+
+    addUser: async (parent, args) => {
+      const user = User.create(args);
+      const token = signToken(user);
+
+      return { token, user };
+    },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
+    },
+    updateExpense: async (parent, { expenseId, name, price }) => {
+      console.log(expenseId);
+      return Expense.findByIdAndUpdate(expenseId, { name: name, price: price });
+    },
+    removeExpense: async (parent, { expenseId }) => {
+      return Expense.findOneAndDelete({ _id: expenseId });
     },
   },
 };

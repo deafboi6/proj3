@@ -1,0 +1,38 @@
+
+
+@media only screen and (max-width: 1300px) {
+    .signup-box-title {
+        font-size: 2rem;
+    }
+    .signup-box {
+        width: 45%;
+        height: 70%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .signup-box-title {
+        font-size: 1.7rem;
+    }
+    .signup-box {
+        width: 50%;
+        height: 70%;
+    }
+    .signup-forget {
+        font-size: .75rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .signup-box-title {
+        font-size: 1.7rem;
+    }
+    .signup-box {
+        width: 150%;
+        height: 75%;
+    }
+    .signup-forget {
+        font-size: 0.7rem;
+    }
+    
+}
