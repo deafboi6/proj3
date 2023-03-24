@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import "./expenseF.css";
+import 'bootstrap/dist/css/bootstrap.css';
 
 import { ADD_EXPENSE } from '../../utils/mutations';
 
@@ -58,7 +59,8 @@ const ExpenseForm = () => {
             className=""
             onSubmit={handleFormSubmit}
           >
-            <select id="expenseCategory" name="name" value={formState.name} onChange={handleSelect}>
+            
+            <select id="expenseCategory" name="name" value={formState.name} onChange={handleSelect} style={{marginLeft: "12%"}}>
               <option disabled selected value="select">Choose category...</option>
               <option value="Housing">Housing</option>
               <option value="Groceries">Groceries</option>
@@ -69,7 +71,6 @@ const ExpenseForm = () => {
               <option value="Other">Other</option>
             </select>
             {/* <input name='name' placeholder='Expense Category' onChange={handleChange}/> */}
-            <div className="">
               <input
                 name="price"
                 placeholder="Expense price..."
@@ -78,7 +79,6 @@ const ExpenseForm = () => {
                 // style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
               />
-            </div>
 
             <div className="">
               <button className="" type="submit">

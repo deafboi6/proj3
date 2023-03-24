@@ -54,8 +54,7 @@ const IncomeForm = () => {
             className=""
             onSubmit={handleFormSubmit}
           >
-            <div className="">
-              <select id="month" name="month" value={formState.month} onChange={handleSelect}>
+              <select id="month" name="month" value={formState.month} onChange={handleSelect} style={{marginLeft: "17%"}}>
                 <option disabled selected value="select">Choose month...</option>
                 <option value="January">January</option>
                 <option value="February">February</option>
@@ -79,7 +78,6 @@ const IncomeForm = () => {
                 className=""
                 onChange={handleChange}
               />
-            </div>
             <div className="">
               <button className="" type="submit">
                 Add Income
