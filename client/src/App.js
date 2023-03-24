@@ -63,7 +63,7 @@ export default function App() {
         ) : (
             <div>
                 <Header />
-                <div>
+                <div style={{marginTop: "7%"}}>
                     <Login />
                     <Signup />
                 </div>
