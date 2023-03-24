@@ -43,18 +43,22 @@ export default function App() {
         {Auth.loggedIn() ? (
             <div>
             <Header />
-            <div>
-                <PieChart />
-            </div>
-            <div>
+            <div className="row">
+            <div className="col">
                 <ExpenseForm />
                 <ExpenseList />
             </div>
-            <div>
+            <div className="col">
                 <IncomeForm />
                 <IncomeList />
             </div>
+            <div className="col">
+                <PieChart />
+            </div>
+            </div>
+            <div style={{float: "left", display: "block"}}>
             <Footer />
+            </div>
         </div>
         ) : (
             <div>
